@@ -1,0 +1,32 @@
+{
+  "name": "excerptor",
+  "version": "1.0.0",
+  "description": "一个用于网页文本内容摘录的Chrome插件。",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daixinye/chrome-excerptor.git"
+  },
+  "author": "daixinye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daixinye/chrome-excerptor/issues"
+  },
+  "homepage": "https://github.com/daixinye/chrome-excerpor#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "clipboard": "^1.6.1",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "gulp": "^3.9.1",
+    "gulp-webpack": "^1.5.0",
+    "webpack": "^2.6.0",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
