@@ -4,8 +4,7 @@
   "description": "一个用于网页文本内容摘录的Chrome插件。",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --hot"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -27,6 +26,7 @@
     "gulp": "^3.9.1",
     "gulp-webpack": "^1.5.0",
     "webpack": "^2.6.0",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-stream": "^3.2.0"
   }
 }

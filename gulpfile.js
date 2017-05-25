@@ -1,10 +1,22 @@
-var webpackConfig = require('./webpack.config.js');
-var webpack = require('gulp-webpack');
-var gulp = require('gulp');
+var gulp = require('gulp'),
+	webpack = require('webpack');
 
-gulp.task('webpack',function(){
-	return gulp.src('./')
-		.pipe(webpack(webpackConfig))
-		.pipe(gulp.dest('.dist/'));
+
+// webpack2 打包
+gulp.task('webpack', () => {
+	let webpackConfig = require('./webpack.config.js');
+	webpack(webpackConfig, (err, stats) => {
+		return err ? console.log(err, stats.toString()) : null;
+	});
 });
 
+gulp.task('default', ['webpack'], () => {
+	copy('app/manifest.json');
+	copy('app/css/content.css','./dist/css');
+});
+
+function copy(path, dist) {
+	dist = dist || './dist';
+	gulp.src(path)
+		.pipe(gulp.dest(dist));
+}
