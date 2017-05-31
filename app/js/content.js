@@ -1,3 +1,9 @@
+import rangy from 'rangy/lib/rangy-core.js';
+import rangyHighlight from 'rangy/lib/rangy-highlighter';
+import rangyClassApplier from 'rangy/lib/rangy-classapplier';
+import rangyTextRange from 'rangy/lib/rangy-textrange';
+import rangySerializer from 'rangy/lib/rangy-serializer';
+
 function sendMessage(message, callback) {
 	chrome.extension.sendMessage(message, callback);
 }
@@ -7,6 +13,16 @@ sendMessage('test', function(res) {
 });
 
 function Menu() {
+	rangy.init();
+
+	this.highlighter = rangy.createHighlighter();
+
+	this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
+		ignoreWhiteSpace: true,
+		tagNames: ["span"]
+	}));
+
+
 	this.lastSelected = '';
 	var body = document.querySelector('body');
 
@@ -26,6 +42,8 @@ function Menu() {
 				break;
 		}
 	}.bind(this);
+
+
 
 	this.createMenu();
 }
@@ -58,6 +76,8 @@ Menu.prototype.getMenu = function() {
 };
 
 Menu.prototype.onmouseup = function(e) {
+	// 对选中的文字进行高亮
+	this.highlighter.highlightSelection("highlight");
 
 	var selectedText = window.getSelection().toString().trim();
 	selectedText ? this.showMenu(e.x, e.y) : this.hideMenu();
@@ -97,5 +117,7 @@ Note.prototype.render = function() {
 };
 
 
+
 var menu = new Menu();
-var note = new Note();
+	var note = new Note();
+
