@@ -1,8 +1,4 @@
 import rangy from 'rangy/lib/rangy-core.js';
-import rangyHighlight from 'rangy/lib/rangy-highlighter';
-import rangyClassApplier from 'rangy/lib/rangy-classapplier';
-import rangyTextRange from 'rangy/lib/rangy-textrange';
-import rangySerializer from 'rangy/lib/rangy-serializer';
 
 function sendMessage(message, callback) {
 	chrome.extension.sendMessage(message, callback);
